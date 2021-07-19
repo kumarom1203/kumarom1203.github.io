@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		input{
+			margin: 5px;
+			width: 100px;
+		}
+	</style>
+</head>
+<body>
+
+
+	<table border="1" width="100%" style="border-collapse: collapse;" id="tcontent">
+		
+	</table>
+
+
+
+</body>
+
+<script type="text/javascript">
+  localStorage.clear();
+	var tcontent = '';
+	var n = 10;
+	var sum = 0;
+	var cell_identifier=0
+      for(var i=0; i<n; i++){
+      	tcontent = tcontent + '<tr>';
+      	for(var j=0; j<n; j++){
+      		cell_identifier++;
+      		tcontent = tcontent+'<td id="td_'+ cell_identifier +'"> '+ cell_identifier +' <input onfocus="higlightCell('+cell_identifier+')" onkeydown="calculate('+cell_identifier+')" onblur="dehiglightCell('+cell_identifier+')"  type="text" name="" id="'+ cell_identifier +'"></td>';
+
+      	}
+      	tcontent = tcontent + '</tr>';
+      }
+
+      
+
+	
+	document.getElementById('tcontent').innerHTML = tcontent;
+
+
+	function higlightCell(cell_identifier){
+		//document.getElementsByTagName('td').style.backgroundColor = "white";
+		document.getElementById('td_'+cell_identifier).style.backgroundColor = "red";
+		if(localStorage.getItem(cell_identifier) === null){
+
+		}else{
+
+			document.getElementById(cell_identifier).value = localStorage.getItem(cell_identifier);
+
+		}
+	}
+
+	function dehiglightCell(cell_identifier){
+		//document.getElementsByTagName('td').style.backgroundColor = "white";
+		document.getElementById('td_'+cell_identifier).style.backgroundColor = "white";
+	}
+
+
+	function calculate(cell_identifier){
+		var total = 0;
+
+        console.log(event.key);
+         	if(event.key === 'Enter') {
+           		var value = document.getElementById(cell_identifier).value
+           		localStorage.setItem(cell_identifier, value); // sum:52:53:54 [52:53:54]
+           		console.clear();
+           		var res = value.split(":"); 
+           		 
+
+           		if(res[0] == 'sum'){
+
+                 for(var p=1; p<res.length; p++){
+                 	values = parseInt(document.getElementById(res[p]).value);
+                    //localStorage.setItem(res[p], values);
+                 	if(isNaN(values)){
+                        console.log('isnotnumber', values);
+                 		values = 0;
+
+                 	}else{
+                 		
+                 	}
+
+                 	total = total + parseInt(values);
+
+                 	console.log('total', total);
+                 	console.log('value', values);
+
+                 }
+            
+
+                 document.getElementById(cell_identifier).value = total;
+
+
+           		}   
+         	}	
+	}
+
+
+</script>
+</html>
+
+

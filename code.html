@@ -1,0 +1,562 @@
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+	pre{
+	border: 1px solid;
+    padding: 13px;
+    font-size: 20px;
+	}
+	h4{
+		color: #3f51b5;
+
+	}
+  .no_border{
+      border: 0px solid;
+    padding: 13px;
+    font-size: 16px;
+  }
+  }
+</style>
+<h4>1. REVERSE A NUMBER</h4>
+
+Original Number: 123456<br>Reverse Number: 654321<br><pre>
+$num = 123456;
+$rev = 0;
+for($i=$num; $i>1; $i = $i/10){ 
+   $rev = ($rev*10) + $i%10;
+}
+echo "Reverse Number: ".$rev;
+</pre>
+
+
+
+<h4>2. REVERSE A STRING</h4>
+
+Original String: ABCDEFM<br>Reverse String: MFEDCBA<br>
+<pre>
+$str = "ABCDEFM";
+$rev = '';
+for($i=strlen($str)-1; $i>=0  ; $i--){ 
+   $rev = $rev.''.$str[$i];
+}
+echo "Reverse String: ".$rev;
+</pre>
+
+
+<h4>3. CHECK WHERE NUMBER IS ARMSTRONG OR NOT</h4>
+
+Original Number: 153<br>Number is armstrom
+<pre>
+$num = 153;
+echo "Original Number: ".$num;
+$total = 0;
+for($i=$num; $i>1; $i = $i/10){
+   $rem = $i%10; 
+   $total = $total + ($rem*$rem*$rem);
+}
+if($total == $num){
+   echo "Number is Armstrong";
+}else{
+   echo "Number is not Armstrong";
+}
+
+</pre>
+
+
+<h4>4. CALCULATE SUM OF EACH NUMBER FROM STRING 4,5,9, 8, 6</h4>
+
+Original String: 4,5,9, 8, 6<br>Sum of String: 32<br>
+<pre>
+
+$str = '4,5,9, 8, 6';
+echo "Original String: ".$str;
+$total = 0;
+$arr = explode(',', $str);
+for ($i=0; $i< count($arr); $i++) {
+   $total = $total + $arr[$i];
+}
+echo "Sum of String: ".$total;
+
+</pre>
+
+<h4>5. SORT AN ARRAY [5, 1, 3, 2, 9, 4, 8, 6]</h4>
+
+Original Array [5,1,3,2,9,4,8,6]<br>Sorted Array [1,2,3,4,5,6,8,9]<br>
+<pre>
+$arr = [5, 1, 3, 2, 9, 4, 8, 6];
+echo "Original Array [".implode(',', $arr).']';
+
+for($i=0; $i < count($arr) ; $i++) { 
+   
+   for ($j=$i+1; $j < count($arr); $j++) { 
+      
+      if($arr[$i] > $arr[$j]){
+       
+        $temp = $arr[$i];
+        $arr[$i] = $arr[$j];
+        $arr[$j] = $temp;
+
+     }
+   }
+}
+
+echo "Sorted Array [".implode(',', $arr).']';
+</pre>
+
+
+
+<h4>6. FIND MIN AND MAX FROM ARRAY [5, 1, 3, 2, 9, 4, 8, 6]</h4>
+
+Original Array [5,1,3,2,9,4,8,6]<br>Max: 9<br>Min: 1<br>
+<pre>
+$arr = [5, 1, 3, 2, 9, 4, 8, 6];
+echo "Original Array [".implode(',', $arr).']';
+$max = $arr[0];
+$min = $arr[0];
+for ($i=1; $i < count($arr) ; $i++) {
+
+   if($max<$arr[$i]){
+
+      $max = $arr[$i];
+
+   }
+
+   if($min>$arr[$i]){
+
+      $min = $arr[$i];
+
+   }
+}
+echo "Max: ".$max;
+echo "Min: ".$min;
+
+</pre>
+
+
+<h4>7. FIND PAIR OF ELEMENT FROM ARRAY [5, 1, 3, 2, 9, 4, 8, 6] WHOSE SUM IS 10</h4>
+
+Original Array [5,1,3,2,9,4,8,6]<br>Paired Number [1, 9], [2, 8], [4, 6]<br>
+<pre>
+$arr = [5, 1, 3, 2, 9, 4, 8, 6];
+echo "Original Array [".implode(',', $arr).']';
+for($i=0; $i < count($arr); $i++) {
+
+   for($j=$i+1; $j < count($arr); $j++) { 
+
+      if($arr[$i] + $arr[$j] == 10){
+
+         $pair[] = "[".$arr[$i].", ".$arr[$j]."]"; 
+      
+      }
+   }
+}
+
+
+echo "Paired Number ".implode(', ', $pair).'';
+
+</pre>
+
+
+<h4>8. SEARCH 10 IN THIS ARRAY [5, 1, 3, 2, 10, 9, 4, 8, 6] </h4>
+
+Original Array [5,1,3,2,10,9,4,8,6]<br>10 Found this is array
+<pre>
+$arr = [5, 1, 3, 2, 10, 9, 4, 8, 6];
+echo "Original Array [".implode(',', $arr).']';
+$found = 0;
+$find = 10;
+
+for ($i=0; $i < count($arr) ; $i++) { 
+
+	if($arr[$i] == $find){
+
+		$found = 1;
+		break;
+
+	}
+
+}
+
+if($found){
+	echo "$find Found this is array";
+}else{
+	echo "$find Not found this is array";
+}
+
+</pre>
+
+
+<h4>9. REMOVE ALL DUPLICATE ELEMENT FROM ARRAY [5, 6, 9, 2, 8, 9, 4, 8, 6]</h4>
+
+Original Array [5,6,9,2,8,9,4,8,6]<br>Unique Array [5,6,9,2,8,4]<br>
+<pre>
+$arr = [5, 6, 9, 2, 8, 9, 4, 8, 6];
+
+echo "Original Array [".implode(',', $arr).']';
+
+for($i=0; $i < count($arr); $i++) {
+
+   $new[$arr[$i]] = $arr[$i]; 
+
+}
+
+echo "Unique Array [".implode(',', $new).']';
+</pre>
+
+<h4>10. FIND ALL DUPLICATE ELEMENT FROM ARRAY [8,5, 6, 9, 2, 8, 9, 4, 8, 6]</h4>
+
+Original Array [8,5,6,9,2,8,9,4,8,6]<br>Duplicate Array [8,8,6,9,8]<br>Unique Duplicate Array [8,6,9]<br>
+<pre>
+$arr = [8,5, 6, 9, 2, 8, 9, 4, 8, 6];
+echo "Original Array [".implode(',', $arr).']';
+for($i=0; $i < count($arr) ; $i++) {
+
+     for ($j=$i+1; $j < count($arr) ; $j++) { 
+
+     	  if($arr[$i] == $arr[$j]){
+
+              $dup[] = $arr[$i];
+              $udup[$arr[$i]] = $arr[$i];
+
+     	  }
+
+     }
+
+}
+echo "Duplicate Array [".implode(',', $dup).']';
+echo "Unique Duplicate Array [".implode(',', $udup).']';
+
+
+</pre>
+
+
+<h4>11. Find missing number in sorted array [1, 2, 5, 8, 9, 11, 12, 13, 15]</h4>
+
+Original Array [1,2,5,8,9,11,12,13,15]<br>Missing Array [3,4,6,7,10,14]<br>
+<pre>
+$arr = [1, 2, 5, 8, 9, 11, 12, 13, 15];
+echo "Original Array [".implode(',', $arr).']';
+
+for($i=0; $i < count($arr)-1 ; $i++) {
+  
+  if($arr[$i+1] - $arr[$i] == 1){
+
+  }else{
+
+  	$diff = $arr[$i+1] - $arr[$i];
+
+  	for ($j=0; $j<$diff-1; $j++) { 
+
+  		$missing[] = $arr[$i] + $j + 1;
+
+  	}
+  }
+
+}
+echo "Missing Array [".implode(',', $missing).']';
+</pre>
+
+
+<h4>12. WRITE THE PROGRAM TO FIND FACTORIAL OF NUMBER</h4>
+
+Original Number 6<br>Factorial of 6 = 720 <br>
+<pre>
+$num = 6;
+echo "Original Number ".$num;
+$fact = 1;
+for($i=1; $i<=$num; $i++) {
+
+  $fact = $fact*$i;
+
+}
+echo "Factorial of $num = $fact ";
+</pre>
+
+
+<h4>12. WRITE THE PROGRAM TO PRINT FABINOCCI SERIES</h4>
+
+Original Number 7<br>0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 
+<pre>
+$num = 7;
+echo "Original Number ".$num."<br>";
+echo $first = 0;
+echo ", ";
+echo $second = 1;
+echo ", ";
+for($i=0; $i<=$num  ; $i++) {
+  
+  $third = $first + $second;
+  echo $third.', ';
+  
+  $first = $second;
+  $second = $third;
+  
+}
+</pre>
+
+
+<h4>
+  WRITE THE CODE FOR GENERATING THIS ARRAY(LOOK LIKE MULTIPLICATION TABLE)
+</h4>
+<pre class='no_border'>Array
+(
+    [0] => Array
+        (
+            [2*1] => 2
+            [2*2] => 4
+        )
+
+    [1] => Array
+        (
+            [3*1] => 3
+            [3*2] => 6
+        )
+
+)
+</pre>ANSWER <br><pre class='no_border'>Array
+(
+    [1] => Array
+        (
+            [1*1] => 1
+            [1*2] => 2
+        )
+
+    [2] => Array
+        (
+            [2*1] => 2
+            [2*2] => 4
+        )
+
+)
+</pre><pre>
+for($i= 1; $i<=20; $i++){
+   for($j=1; $j<=10; $j++){
+      $ans[$i]["$i*$j"] = $i*$j;
+   }
+}
+</pre>
+
+<h4>
+13. 
+Being greedy for Water:
+You are given container full of water. Container can have limited amount of water. 
+You also have NN bottles to fill. 
+You need to find the maximum numbers of bottles you can fill.
+Input:
+First Argument contains an integer arg1 capacity of the container.
+Second Argument contains an interger arg2 number of bottles(length of array).
+Third Argument contains an array arg3 capacities of each bottles.
+
+Output:
+You should print maximum number of bottles you can fill.
+<br>
+Example #1:
+    SAMPLE INPUT 
+    I: 10 
+    II: 5 
+    III: [8,5,4,3,2]
+
+    SAMPLE OUTPUT
+    3
+<br>
+Example #2:
+    SAMPLE INPUT 
+    I: 10 II: 6 III: [1,3,7,2,2,1]
+
+    SAMPLE OUTPUT 
+    5
+</h4>
+
+3
+
+<pre>
+$container = 10;
+$botel = 5;
+$botelcapacity = [8,5,4,3,2];
+sort($botelcapacity);
+$tem = 0;
+$count = 0;
+for($i=0; $i < count($botelcapacity); $i++) { 
+    $tem = $tem + $botelcapacity[$i];
+    if($tem<$container){
+       $count++;
+    }else{
+      break;
+    }
+}
+
+echo $count;
+</pre>
+
+
+
+
+
+
+<style type="text/css">
+    pre{
+    border: 1px solid;
+    padding: 13px;
+    font-size: 20px;
+    }
+    h4{
+        color: #3f51b5;
+
+    }
+  .no_border{
+      border: 0px solid;
+    padding: 13px;
+    font-size: 16px;
+  }
+  }
+</style>
+<h4>
+14. WRITE A PROGRAM TO SORT ARRAY BY VALUE LENGTH<br>
+$array = ["hello", "hi", "water", "pop", "dgdfgdfgfgg"];
+</h4>
+
+Array
+(
+    [0] => dgdfgdfgfgg
+    [1] => water
+    [2] => hello
+    [3] => pop
+    [4] => hi
+)
+
+<pre>
+
+$array = ["hello", "hi", "water", "pop", "dgdfgdfgfgg"];
+/*
+usort($array, function($a, $b) {
+    return strlen($b) - strlen($a);
+});
+this is also solution 
+*/
+
+for ($i=0; $i < count($array); $i++) { 
+
+    for($j=$i+1; $j < count($array); $j++){
+        if(strlen($array[$i]) < strlen($array[$j])){
+          $tem = $array[$i];
+          $array[$i] = $array[$j];
+          $array[$j] = $tem;
+
+        }
+
+    }
+
+    
+}
+print_r($array);
+
+</pre>
+
+
+<h4>
+    15. 
+WRITE A PROGRAM THAT TAKES STRING AS AFRGUMENTS AND RETUEN ARRAY AS COUNT OF CHARACTER AND DIGIT<br>
+INPUT: $string = 'omkum154ar'<br>
+OUTPUT: ['digit'=>3, 'letter'=>7]
+</h4>
+
+Array
+(
+    [digit] => 3
+    [letter] => 7
+)
+
+<pre>
+$string = 'omkum154ar';
+$digit = 0;
+$letter = 0;
+
+
+for ($i=0; $i < strlen($string); $i++) { 
+    
+   if(is_numeric($string[$i])){
+        $digit++;
+   }else{
+        $letter++;
+   }
+
+}
+
+$res = array('digit'=> $digit, 'letter'=>$letter);
+print_r($res);
+    </pre>
+
+
+
+
+<h4>16. 
+WRITE A PROGRAM THAT TAKES STRING AS AFRGUMENTS AND RETURN COMPRESSED STRING<br>
+INPUT: $string = 'AAAFGGAACCFFG'<br>
+OUTPUT: A3FG2A2C2F2G
+</h4>
+
+AAAFGGAACCFFG<br><br>A3FG2A2C2F2G
+<pre>
+    $string = 'AAAFGGAACCFFG';
+$start = '';
+$com = '';
+for ($i=0; $i < strlen($string); $i++) { 
+    $letter = 1;
+    
+    if($start !=  $string[$i]){
+
+           for ($j=$i+1; $j < strlen($string) ; $j++) { 
+        if(($string[$i] == $string[$j]) ){
+             $letter++;
+        }else{
+            break;
+        }
+        
+        
+    }
+
+       if($letter == 1 ){
+       $com = $com.''.$string[$i];
+    }else{
+         $com = $com.''.$string[$i].$letter;
+    }
+
+    }
+
+ 
+
+
+ 
+    
+  $start = $string[$i];
+}
+echo $string;
+
+echo $com;
+    </pre>
+
+
+
+
+
+
+
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
